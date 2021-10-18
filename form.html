@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Student Registration Form</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="wrapper bg-white">
+        <div class="form" id="form">
+            <div class="h3">Student Registration Form</div>
+            <form class="requires-validation" action="javascript:submit()" novalidate>
+                <div class="row">
+                    <div class="col-md-6 mt-md-0 mt-3"> <label>First Name</label> 
+                        <input type="text" id="fname" name="fname" class="form-control" required>
+                        <div class="valid-feedback">First Name field is valid!</div>
+                        <div class="invalid-feedback">First Name field is required !</div>
+                    </div>
+                    <div class="col-md-6 mt-md-0 mt-3"> <label>Last Name</label> 
+                        <input type="text" id="lname" name="lname" class="form-control" required> 
+                        <div class="valid-feedback">Last Name field is valid!</div>
+                        <div class="invalid-feedback">Last Name field is required !</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mt-md-0 mt-3"> <label>Birthday</label> 
+                        <input type="date" id="dob" name="dob" class="form-control" required> 
+                        <div class="valid-feedback">DOB field is valid!</div>
+                        <div class="invalid-feedback">DOB field is required !</div>
+                    </div>
+                    <div class="col-md-6 mt-md-0 mt-3"> <label>Gender</label>
+                        <div class="d-flex align-items-center mt-2"> <label class="option"> 
+                            <input type="radio" name="radio">Male <span class="checkmark"></span> </label> 
+                            <label class="option ms-4">
+                            <input type="radio" name="radio">Female <span class="checkmark"></span> </label> 
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mt-md-0 mt-3"> <label>Email</label> 
+                        <input type="email" id="email" name="email" class="form-control" required>
+                        <div class="valid-feedback">Email field is valid!</div>
+                        <div class="invalid-feedback">Email field is required !</div>
+                     </div>
+                    <div class="col-md-6 mt-md-0 mt-3"> <label>Phone Number</label> 
+                        <input type="tel" name="phone" class="form-control" required>                     
+                        <div class="valid-feedback">Phone Number field is valid!</div>
+                        <div class="invalid-feedback">Phone Number field is required !</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mt-md-0 mt-3"> <label>Total Mark</label> 
+                        <input type="text" id="mark" name="mark" class="form-control" required>            
+                        <div class="valid-feedback">Mark field is valid!</div>
+                        <div class="invalid-feedback">Mark field is required !</div> 
+                    </div>
+                    <div class="col-md-6 mt-md-0 mt-3"> <label>Percentage</label> 
+                        <input type="text" name="per" class="form-control" required>            
+                        <div class="valid-feedback">Percentage field is valid!</div>
+                        <div class="invalid-feedback">Percentage field is required !</div> 
+                    </div>
+                </div>
+
+                <button class="btn btn-primary mt-3" id="submit" type="submit">Submit</button>
+        </div>
+        </form>
+        <div class="form" id="success">
+            <div class="h3">Submitted successfully</div>
+            <button class="btn btn-warning mt-3" id="submit" type="submit" onclick="submit()">BACK</button>
+        </div>
+    </div>
+    <script>
+        function submit() {
+            var x = document.getElementById("form");
+            var y = document.getElementById("success");
+            // var z = document.getElementsByTagName("input");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                y.style.display = "none";
+                location.reload();
+            } else {
+                x.style.display = "none";
+                y.style.display = "block";
+            }
+        }
+
+        (function () {
+            'use strict'
+            const forms = document.querySelectorAll('.requires-validation')
+            Array.from(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+
+    </script>
+</body>
+
+</html>
